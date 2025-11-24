@@ -19,7 +19,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
         <div className="relative z-10 max-w-md">
           <div className="glass p-8 rounded-card-lg">
             <h1 className="text-4xl font-bold text-white mb-4">
-              Floor
+              Floor Plan Management System
             </h1>
             <p className="text-lg text-white/90 mb-6">
               Simplify room booking and resource management for your organization.
@@ -28,8 +28,8 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
               {[
                 'Real-time availability tracking',
                 'Easy booking management',
-                'Smart scheduling with conflict detection',
-                'Team collaboration features',
+                'Real-time floor/room management',
+                'Limited offline functionality',
               ].map((feature, index) => (
                 <li key={index} className="flex items-start gap-3 text-white/90">
                   <svg
