@@ -1,4 +1,4 @@
 export const config = {
-  apiBaseUrl: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api',
+  apiBaseUrl: import.meta.env.VITE_API_BASE_URL,
   apiTimeout: 30000,
 } as const;

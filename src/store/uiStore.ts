@@ -13,7 +13,7 @@ interface UIState {
   modal: ModalState;
 
   // Actions
-  setLoading: (isLoading: boolean, message?: string) => void;
+  setLoading: (isLoading: boolean, message?: string | null) => void;
   addToast: (toast: Omit<ToastMessage, 'id'>) => void;
   removeToast: (id: string) => void;
   clearToasts: () => void;

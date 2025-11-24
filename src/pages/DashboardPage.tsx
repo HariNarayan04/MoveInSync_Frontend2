@@ -3,8 +3,6 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { AvailabilitySearchForm } from '@/components/availability/AvailabilitySearchForm';
 import { AvailableRoomsList } from '@/components/availability/AvailableRoomsList';
 import { BookingModal } from '@/components/bookings/BookingModal';
-import { FloorsPage } from './FloorsPage';
-
 export const DashboardPage: React.FC = () => {
   return (
     <DashboardLayout>

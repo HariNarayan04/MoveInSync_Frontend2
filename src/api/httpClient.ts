@@ -1,7 +1,6 @@
 import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { config } from '@/config';
 import { handleApiError } from '@/errors/errorHandler';
-import { ERROR_CODES } from '@/errors/errorCodes';
 
 class HttpClient {
   private client: AxiosInstance;
