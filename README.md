@@ -17,8 +17,7 @@ Floor Plan Management System is a React + TypeScript client that lets Admins man
 4. [Project Structure](#project-structure)  
 5. [Functional Flow](#functional-flow)  
 6. [Offline-First Architecture](#offline-first-architecture)  
-7. [API Overview](#api-overview)  
-8. [Development Notes](#development-notes)
+7. [API Overview](#api-overview)
 
 ---
 
