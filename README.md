@@ -4,8 +4,16 @@ Floor Plan Management System is a React + TypeScript client that lets Admins man
 
 ---
 
-**🚀 Live Demo:** [Floor Plan Management System Website](https://fpmsfrontend2.vercel.app/)  
-**🔗 Backend Repository:** [Backend repository](https://github.com/HariNarayan04/MoveInSync_Backend)
+**Live Demo:** [Floor Plan Management System Website](https://fpmsfrontend2.vercel.app/) 
+### 🔑 Admin Test Credentials
+> **Note:** Admin registration is currently unavailable in the UI. Please use these pre-configured accounts to test admin functionalities. For client roles signup works fine.
+
+| Role | Email ID | Password |
+| :--- | :--- | :--- |
+| **Admin 1** | `hari@gamil.com` | `123` |
+| **Admin 2** | `admin@gmail.com` | `testPass` |
+
+**Backend Repository:** [Backend repository](https://github.com/HariNarayan04/MoveInSync_Backend)
 
 ---
 
