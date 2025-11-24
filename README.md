@@ -4,6 +4,11 @@ Floor Management System is a React + TypeScript client that lets Admins manage o
 
 ---
 
+**🚀 Live Demo:** [Insert Frontend URL Here](https://fpmsfrontend2.vercel.app/)  
+**🔗 Backend Repository:** [Insert Backend Repo Link Here](https://github.com/HariNarayan04/MoveInSync_Backend)
+
+---
+
 ## Table of Contents
 
 1. [Features](#features)  
@@ -62,7 +67,7 @@ Floor Management System is a React + TypeScript client that lets Admins manage o
 
 ## Getting Started
 
-# Frontend
+### Frontend
 
 1. **Install dependencies**
    ```bash
@@ -82,7 +87,7 @@ Floor Management System is a React + TypeScript client that lets Admins manage o
    npm run preview
    ```
 
-# Backend
+### Backend
 
 1. **Install dependencies**
    ```bash
@@ -109,7 +114,7 @@ Floor Management System is a React + TypeScript client that lets Admins manage o
 
 ## Project Structure
 
-# Frontend
+### Frontend
 
 ```
 src/
@@ -122,7 +127,7 @@ src/
  └─ factory/            # Toast, Modal, Loader, Button factories
 ```
 
-# Backend
+### Backend
 
 ```
 src/
