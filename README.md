@@ -7,7 +7,7 @@ Floor Management System is a React + TypeScript client that lets Admins manage o
 ## Table of Contents
 
 1. [Features](#features)  
-2. [Tech Stack](#tech-stack)  
+2. [Technologies Used](#technologies-used)  
 3. [Getting Started](#getting-started)  
 4. [Project Structure](#project-structure)  
 5. [Functional Flow](#functional-flow)  
@@ -21,34 +21,48 @@ Floor Management System is a React + TypeScript client that lets Admins manage o
 
 - **Modern UI** built with React Router and Tailwind-styled components.  
 - **Role-aware experience**  
-  - **Admin**: manage floors/rooms, review bookings.  
+  - **Admin**: manage floors, rooms and all bookings.  
   - **Client**: search availability, create/update/cancel own bookings.  
 - **Floor & Room Management**  
-  - Tabs for floors, cards for rooms, modal-driven CRUD.  
-  - All data maps directly to backend endpoints described in `API_INTEGRATION.md`.  
+  - Tabs for floors, cards for rooms, modal-driven CRUD.
+  - Only Admin can view layout and make changes to floor plan(floor/room).  
 - **Booking Workflow**  
-  - Availability search, booking modal, “My Bookings” history.  
+  - 1. Availability search based on room capacity, time slot and features like projector/whiteboard.
+  - 2. Choose the right room and proceed with booking.
+  - 3. Manage your booking in "My Bookings" in the navigation bar.
 - **Offline operations**  
   - IndexedDB cache for floors/rooms.  
   - Persistent queue for Admin mutations performed offline.  
-  - Automatic replay when the network returns; temp IDs replaced with server IDs.  
-- **Reusable factories** for toasts, loaders, buttons, and modals.
+  - Automatic replay when the network returns; temp IDs replaced with server IDs
 
 ---
 
-## Tech Stack
+## Technologies Used
 
-| Layer      | Libraries / Tools                               |
-|-----------|--------------------------------------------------|
-| UI        | React 18, React Router v6, Tailwind CSS          |
-| State     | Zustand (auth, booking, UI/toast stores)         |
-| HTTP      | Axios + interceptors, centralized error handler  |
-| Offline   | IndexedDB (native), OfflineQueueService, SyncService |
-| Tooling   | TypeScript, Vite, ESLint                         |
+### Frontend
+* **React (Vite):** Utilized for building a fast, interactive, and highly performant user interface.
+* **TypeScript:** Used for static typing to ensure code reliability, better developer experience, and fewer runtime errors.
+* **Tailwind CSS:** A utility-first CSS framework used for rapid and responsive UI styling.
+* **Context API:** Utilized for global state management across the application without prop drilling.
+
+### Backend
+* **Node.js:** Runtime environment for executing JavaScript on the server side.
+* **Express.js:** A minimal and flexible Node.js web application framework used for handling API routes.
+
+### Database
+* **MongoDB:** NoSQL database used for flexible and scalable data storage.
+* **Mongoose:** ODM (Object Data Modeling) library used to model application data and interact with MongoDB.
+
+### DevOps & Deployment
+* **Vercel:** Used to deploy and host the client-side (Frontend) application.
+* **Render:** Used to host the server-side (Backend) API.
+* **Git/GitHub:** Version control and source code management.
 
 ---
 
 ## Getting Started
+
+# Frontend
 
 1. **Install dependencies**
    ```bash
@@ -68,9 +82,34 @@ Floor Management System is a React + TypeScript client that lets Admins manage o
    npm run preview
    ```
 
+# Backend
+
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+2. **Configure environment**
+   ```env
+    PORT=8080
+    MONGO_URI=mongodb://localhost:27017/FPMS
+    JWT_SECRET=your_jwt_secret_here
+    CLIENT_URL=your_frontend_url_here
+    NODE_ENV=development
+   ```
+3. **Run dev server**
+   ```bash
+   npm run dev
+   ```
+4. **Build / Preview**
+   ```bash
+    npm start
+   ```
+
 ---
 
 ## Project Structure
+
+# Frontend
 
 ```
 src/
@@ -83,14 +122,30 @@ src/
  └─ factory/            # Toast, Modal, Loader, Button factories
 ```
 
+# Backend
+
+```
+src/
+ ├─ controllers/       # Request handlers (availability, booking, floor, room, user)
+ ├─ middlewares/       # auth, logger, error handler
+ ├─ models/            # Mongoose schemas
+ ├─ routes/            # Express routes
+ ├─ utils/             # DB connection, auth helpers
+ ├─ logs/              # runtime logs
+ ├─ index.js           # app entrypoint
+ .env.example
+ package.json
+ ```
+
 ---
 
 ## Functional Flow
 
 ### Authentication
-- Login and Signup call `/api/v1/user/login` & `/api/v1/user/signup` (see `API_INTEGRATION.md`).  
-- Backend sets an httpOnly cookie with `{ _id, email, role }`.  
-- `authStore` persists the minimal user object; `ProtectedRoute` and `AdminRoute` enforce access.
+1. Login and Signup required as initial step, it sets user accessiblility depending on role. 
+2. Login persists using JWT token in cookies.
+3. `authStore` persists the minimal user object; `ProtectedRoute` and `AdminRoute` enforce access.
+Note : Admin cannot be created directly from fronted for security reasons, you need to manually set admin role in DB.
 
 ### Booking
 1. User searches availability (`POST /api/v1/availability/search`).  
@@ -140,25 +195,10 @@ All endpoints, payloads, and response shapes are documented in [`API_INTEGRATION
 | Floors   | `GET /api/v1/floors`                       | Admin only            |
 | Rooms    | `GET /api/v1/floors/:floorId/rooms`        | Admin only            |
 | Rooms    | `POST /api/v1/floors/:floorId/rooms`       | Admin only            |
-| Rooms    | `PUT /api/v1/rooms/:id`, `DELETE /rooms/:id` | Admin only         |
+| Rooms    | `PUT /api/v1/rooms/:id`, `DELETE /rooms/:id` | Admin only          |
 | Booking  | `POST /api/v1/rooms/:roomId/bookings`      | Clients               |
 | Booking  | `GET/PUT/DELETE /api/v1/bookings/:id`      | Clients (own data)    |
 
 All requests use snake_case fields and send credentials (`withCredentials: true`). Error handling follows the shared schema from `API_INTEGRATION.md`.
 
 ---
-
-## Development Notes
-
-- **Error Handling**: `errors/errorHandler.ts` normalizes Axios failures; 401 responses trigger a logout event caught in `App.tsx`.  
-- **State Persistence**: `authStore` uses `zustand/persist`; booking + UI stores are session-only.  
-- **Role Awareness**: Header hides Admin actions for non-admins; server-side auth must still enforce role checks.  
-- **Offline Testing Tips**:  
-  1. Simulate offline in DevTools.  
-  2. Create floors/rooms → verify IndexedDB and queue contents.  
-  3. Reload while offline → data remains thanks to IndexedDB.  
-  4. Reconnect → queue flushes, IndexedDB rewrites temp IDs with real ones.
-
----
-
-For endpoint-level details, payload examples, and UI mapping, refer to [`API_INTEGRATION.md`](API_INTEGRATION.md). PRs should keep both the README and API spec in sync as features evolve.
