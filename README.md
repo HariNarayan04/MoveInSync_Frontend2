@@ -1,11 +1,11 @@
-# Floor Management System
+# Floor Plan Management System
 
-Floor Management System is a React + TypeScript client that lets Admins manage office floors/rooms and clients book meeting spaces. It follows the API contract defined in `API_INTEGRATION.md`, supports role-based access, and works even when offline thanks to IndexedDB caching and a custom sync queue.
+Floor Plan Management System is a React + TypeScript client that lets Admins manage office floors/rooms and clients book meeting spaces. It follows the API contract defined in `API_INTEGRATION.md`, supports role-based access, and works even when offline thanks to IndexedDB caching and a custom sync queue.
 
 ---
 
-**🚀 Live Demo:** [Insert Frontend URL Here](https://fpmsfrontend2.vercel.app/)  
-**🔗 Backend Repository:** [Insert Backend Repo Link Here](https://github.com/HariNarayan04/MoveInSync_Backend)
+**🚀 Live Demo:** [Floor Plan Management System Website](https://fpmsfrontend2.vercel.app/)  
+**🔗 Backend Repository:** [Backend repository](https://github.com/HariNarayan04/MoveInSync_Backend)
 
 ---
 
