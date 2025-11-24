@@ -26,6 +26,7 @@ Floor Plan Management System is a React + TypeScript client that lets Admins man
 5. [Functional Flow](#functional-flow)  
 6. [Offline-First Architecture](#offline-first-architecture)  
 7. [API Overview](#api-overview)
+8. [UI Screenshots](#ui-screenshots)
 
 ---
 
@@ -214,3 +215,36 @@ All endpoints, payloads, and response shapes are documented in [`API_INTEGRATION
 All requests use snake_case fields and send credentials (`withCredentials: true`). Error handling follows the shared schema from `API_INTEGRATION.md`.
 
 ---
+
+##  UI Screenshots
+
+<table>
+  <tr>
+    <td width="50%">
+      <h3 align="center">Dashboard</h3>
+      <div align="center">
+        <img src="./UI_Screenshots/DashBoard.png" alt="Dashboard Screen" width="100%">
+      </div>
+    </td>
+    <td width="50%">
+      <h3 align="center">Floor Management</h3>
+      <div align="center">
+        <img src="./UI_Screenshots/FloorManagement.png" alt="Floor Management Screen" width="100%">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3 align="center">My Bookings</h3>
+      <div align="center">
+        <img src="./UI_Screenshots/MyBookings.png" alt="My Bookings Screen" width="100%">
+      </div>
+    </td>
+    <td width="50%">
+      <h3 align="center">Room Booking</h3>
+      <div align="center">
+        <img src="./UI_Screenshots/RoomBooking.png" alt="Room Booking Screen" width="100%">
+      </div>
+    </td>
+  </tr>
+</table>
